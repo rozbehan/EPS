@@ -69,7 +69,7 @@ The Initialization_detail.py is for adding new experiments and can not be change
                      1: [('A', 'B', 40)], \
                      2: [('B', 'C', 40)], \
                      3: [('D', 'C', 40)] \
-                     }\
+                     }
      
      The numbers 1,2,3 shows the order of training. As an example, the first block contains 30 trials of relations with A1, A2, A3, or A4 as the sample stimuli and three comparison stimuli from B1, B2, B3, and B4. Note that the correct choice must be among the comparison stimuli, say for A2, (B1, B3, B4) is not a valid action set/comparison stimuli. Moreover that number of trials at each block must be a multiple of num_classes. Since, the model produce the same number of trial for each particular pair. 
  
@@ -83,7 +83,7 @@ The Initialization_detail.py is for adding new experiments and can not be change
                      5:[('A2', 'C2', 10)],\
                      6:[('A1', 'C1', 5),('A2', 'C2', 5)],\
                      7:[('A1', 'B1', 2),('A2', 'B2', 2),('A1', 'C1', 2),('A2', 'C2', 2)]\
-                    }\
+                    }
      This case, the desired relation to be trained in each block and the number of its repetition is determined. The num_classes must be compatible with the provided relations. The above training_order means after mastery of relation A1-B1 in blocks of 10 trials, A2-B2 will be trained, then a block of mixed A1-B1 and A2-B2. Next, A1-C1, then A2-C2 and then a mixed block of A1-C1, A2-C2. Finally, all the trained relations will make a block and by passing the mastery criteria, the training phase will be finished.   
 
 **testing_order**: The structure of testing and blocks in dict() format. It must be similar to the First format of training test, say: 
@@ -94,7 +94,7 @@ The Initialization_detail.py is for adding new experiments and can not be change
                     2:[('B', 'A', 9),('C', 'B', 9),('C', 'D', 9)],\
                     3:[('A', 'C', 9)],\
                     4:[('C', 'A', 9),('B', 'D', 9), ('D', 'B', 9),('A', 'D', 9),('D', 'A', 9)]\
-                   }\
+                   }
                    
     In order to preperation of the results, two other dict() needs to be set in accordance with the training_order:
     - **test_block_ID**: which name the blocks. One sample could be:
@@ -105,7 +105,7 @@ The Initialization_detail.py is for adding new experiments and can not be change
         plot_blocks= {\
                         'Direct':['AB', 'BC', 'DC'],\
                         'Derived':['BA', 'CB', 'CD', 'AC', 'CA', 'BD', 'DB', 'AD', 'DA']\
-                    }\
+                    }
               
         where 'AB' means all possible relations between the two categories say A1-B1, A2-B2, A3-B3, etc. One must set it as empty dict() to remove this extra plot. 
         
