@@ -84,6 +84,7 @@ The Initialization_detail.py is for adding new experiments and can not be change
                      6:[('A1', 'C1', 5),('A2', 'C2', 5)],\
                      7:[('A1', 'B1', 2),('A2', 'B2', 2),('A1', 'C1', 2),('A2', 'C2', 2)]\
                     }
+                    
      This case, the desired relation to be trained in each block and the number of its repetition is determined. The num_classes must be compatible with the provided relations. The above training_order means after mastery of relation A1-B1 in blocks of 10 trials, A2-B2 will be trained, then a block of mixed A1-B1 and A2-B2. Next, A1-C1, then A2-C2 and then a mixed block of A1-C1, A2-C2. Finally, all the trained relations will make a block and by passing the mastery criteria, the training phase will be finished.   
 
 **testing_order**: The structure of testing and blocks in dict() format. It must be similar to the First format of training test, say: 
