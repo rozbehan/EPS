@@ -48,20 +48,27 @@ The Initialization_detail.py is for adding new experiments and can not be change
 
 
 ### For environment:
-**experiment_ID**: A positive number which is used for saving the results in the results folder. The file name would be: 
+**experiment_ID**: \
+A positive number which is used for saving the results in the results folder. The file name would be: 
 'agent_type_Env_environment_ID_ExpID_experiment_ID'
     
-**environment_ID**: Is the key to the defult ID numbers, that adress the details of a protocol
+**environment_ID**: \
+Is the key to the defult ID numbers, that adress the details of a protocol
 
-**max_trial**: The maximum number of allowed trials in the training phase. If the learning is so slow due to the parameters, the training might not be finished
+**max_trial**: \
+The maximum number of allowed trials in the training phase. If the learning is so slow due to the parameters, the training might not be finished
 
-**num_agents**: The number of participants (agents); The program will be repeated for num_agents times and the final result would be the average
+**num_agents**: \
+The number of participants (agents); The program will be repeated for num_agents times and the final result would be the average
 
-**num_classes**: Is the number of classes in the experiment. It must be compatible with training_order
+**num_classes**: \
+Is the number of classes in the experiment. It must be compatible with training_order
 
-**size_action_set**: The number of comparison stimuli in the experiment. This must be at least 2 and at most the num_classes
+**size_action_set**: \
+The number of comparison stimuli in the experiment. This must be at least 2 and at most the num_classes
 
-**training_order**: The structure of training and blocks in dict() format. There are two ways to initialize it though:
+**training_order**: \
+The structure of training and blocks in dict() format. There are two ways to initialize it though:
 
 - First: let num_classes=4, and size_action_set=3, and
 
@@ -87,7 +94,8 @@ The Initialization_detail.py is for adding new experiments and can not be change
                     
      This case, the desired relation to be trained in each block and the number of its repetition is determined. The num_classes must be compatible with the provided relations. The above training_order means after mastery of relation A1-B1 in blocks of 10 trials, A2-B2 will be trained, then a block of mixed A1-B1 and A2-B2. Next, A1-C1, then A2-C2 and then a mixed block of A1-C1, A2-C2. Finally, all the trained relations will make a block and by passing the mastery criteria, the training phase will be finished.   
 
-**testing_order**: The structure of testing and blocks in dict() format. It must be similar to the First format of training test, say: 
+**testing_order**: \
+The structure of testing and blocks in dict() format. It must be similar to the First format of training test, say: 
 
 - 
     testing_order={\
@@ -98,10 +106,12 @@ The Initialization_detail.py is for adding new experiments and can not be change
                    }
                    
     In order to preperation of the results, two other dict() needs to be set in accordance with the training_order:
-    - **test_block_ID**: which name the blocks. One sample could be:
+    - **test_block_ID**: \
+    which name the blocks. One sample could be:
     
         {1:'Baseline', 2:'Symmetry', 3:'Transivity',4:'Equivalence'}
-    - **plot_blocks**: That is an option for desired combination of relasions, say:
+    - **plot_blocks**: \
+    That is an option for desired combination of relasions, say:
         
         plot_blocks= {\
                         'Direct':['AB', 'BC', 'DC'],\
@@ -112,17 +122,22 @@ The Initialization_detail.py is for adding new experiments and can not be change
         
         "plot_blocks_ID": {'relatin_type':['Direct','Derived']}
 
-**mastery_training**: A value between 0 and one that shows the mastery criteria. $0.9$ means $90\%$ correct choices in a block.  
+**mastery_training**: \
+A value between 0 and one that shows the mastery criteria. $0.9$ means $90\%$ correct choices in a block.  
 
 ### For agent:
 
-**policy_type**: Could be ['standard', 'softmax']. The difference is on computation of probabilities from h-values. In 'standard' type, h-values must be positive.
+**policy_type**: \
+Could be ['standard', 'softmax']. The difference is on computation of probabilities from h-values. In 'standard' type, h-values must be positive.
 
-**beta_softmax**: Applicable for 'softmax' type. float >=0, probabilities are proportional to exp(beta_softmax*h_value) and finding the appropriate value is very important. In general, Its higher value, increases the chance of an edge with the largest h-value to be chosen. For instance, let the h=[1, 25, 3] be the h-values for three options. In the 'standard' policy the prob=[0.03448276 0.86206897 0.10344828]. In 'softmax' if beta_softmax=0.0, then prob=[0.333333, 0.333333, 0.333333], if beta_softmax=0.1, then prob=[0.07550259, 0.83227834, 0.09221907], if beta_softmax=1, then prob=[3.77513454e-11, 1.00000000e+00, 2.78946809e-10], and if beta_softmax=10, then [5.87928270e-105, 1.00000000e+000, 2.85242334e-096].
+**beta_softmax**: \
+Applicable for 'softmax' type. float >=0, probabilities are proportional to exp(beta_softmax*h_value) and finding the appropriate value is very important. In general, Its higher value, increases the chance of an edge with the largest h-value to be chosen. For instance, let the h=[1, 25, 3] be the h-values for three options. In the 'standard' policy the prob=[0.03448276 0.86206897 0.10344828]. In 'softmax' if beta_softmax=0.0, then prob=[0.333333, 0.333333, 0.333333], if beta_softmax=0.1, then prob=[0.07550259, 0.83227834, 0.09221907], if beta_softmax=1, then prob=[3.77513454e-11, 1.00000000e+00, 2.78946809e-10], and if beta_softmax=10, then [5.87928270e-105, 1.00000000e+000, 2.85242334e-096].
 
-**gamma_damping**: A float number between 0 and 1 which controls forgetting/damping of h-values. The closser to zero, the less forgetting and the closer to one, the less learning/memory.
+**gamma_damping**: \
+A float number between 0 and 1 which controls forgetting/damping of h-values. The closser to zero, the less forgetting and the closer to one, the less learning/memory.
 
-**agent_type**: Could be ['positive_h','negative_h','viterbi','absorbing']. The most critical part of the model is the way the agent learns derived relations. This is projected into the connection weights (h-values). In the model, the asuumption is these connections are made and dynamically updated in the network during training, and we compute them whenever a trial (test) targeted them. The scenarios that we cover in the model, addressed in the agent_type:
+**agent_type**: \
+Could be ['positive_h','negative_h','viterbi','absorbing']. The most critical part of the model is the way the agent learns derived relations. This is projected into the connection weights (h-values). In the model, the asuumption is these connections are made and dynamically updated in the network during training, and we compute them whenever a trial (test) targeted them. The scenarios that we cover in the model, addressed in the agent_type:
 
 - positive_h: h-values must be positive. New connections are computed based on max-product using Dijekstra algorithm.
 
@@ -132,26 +147,34 @@ The Initialization_detail.py is for adding new experiments and can not be change
 - absorbing: The case that derived relations are computed based on a random walk, when action_set form the absorbing states.
 
 
-**K1**: Is a positive value for updating the h-values and the defult value is one based on original PS. In the model K1 could be any positive value
+**K1**: \
+Is a positive value for updating the h-values and the defult value is one based on original PS. In the model K1 could be any positive value
 
-**K2**: A positive number which represents the symmetry relation in the model and upper bounded by K1 
+**K2**: \
+A positive number which represents the symmetry relation in the model and upper bounded by K1 
 
-**K3**: A positive number, uper bounded by where K1/(size_action_set - 1). K3 is used in the negative reward case in order to reinforce other options compare to the wrong choice agent have done. This parameter helps to keep the h-values positive. If the agent_type ='negative_h', K3 and K4 are irrelevant since the h-values can be negative. 
+**K3**: \
+A positive number, uper bounded by where K1/(size_action_set - 1). K3 is used in the negative reward case in order to reinforce other options compare to the wrong choice agent have done. This parameter helps to keep the h-values positive. If the agent_type ='negative_h', K3 and K4 are irrelevant since the h-values can be negative. 
 
-**K4**: Similar to K2 for symmetric relations, in the negative reward situation. 
+**K4**: \
+Similar to K2 for symmetric relations, in the negative reward situation. 
 
-**category**: Could be ['True', 'False']. If category='True', The transition probabilities computed as marginal probabilities to each category. For instance, if A-B and A-C are trained, then the sum of output probabilities from A would be 2 in the case of category=True, and one otherwise. The defult value is category=False.
+**category**: \
+Could be ['True', 'False']. If category='True', The transition probabilities computed as marginal probabilities to each category. For instance, if A-B and A-C are trained, then the sum of output probabilities from A would be 2 in the case of category=True, and one otherwise. The defult value is category=False.
 
-**memory_sharpness**:  A value between 0 and one which shows that how much the agent uses the memory i.e. navigate through the memory clips and reach an action indirectly. The more intact memory the higher value of mempry_sharpness. Aplicable for 'standard' type and the default value is 1. memory_sharpness=1 means memory is used completely and  memory_sharpness=0 means actions will be random for the derived cases.
+**memory_sharpness**: \
+A value between 0 and one which shows that how much the agent uses the memory i.e. navigate through the memory clips and reach an action indirectly. The more intact memory the higher value of mempry_sharpness. Aplicable for 'standard' type and the default value is 1. memory_sharpness=1 means memory is used completely and  memory_sharpness=0 means actions will be random for the derived cases.
     
-**nodal_theta**: Could be ['Not', 'Lin', 'Pow'] and aplicable for 'standard' type. nodal_theta and gamma_nodal are related to nodal effect and provide options for computing probabilities in derived relations. nodal_theta shows the policy to define theta where it will be used to compute the probabilities. Let the calculated probabilty from a given agent_type be p=[p_1, p_2, p_3] and a random probability (analogous to not using memory/learning) be p_r=[1/3, 1/3, 1/3]. Moreover the D_nodal shows the number of nodes between the percept and the action set. (D_nodal for A and C is one and for A and D is two if the training order is A-B-C-D). Then the final probability will be calculated as 
+**nodal_theta**: \
+Could be ['Not', 'Lin', 'Pow'] and aplicable for 'standard' type. nodal_theta and gamma_nodal are related to nodal effect and provide options for computing probabilities in derived relations. nodal_theta shows the policy to define theta where it will be used to compute the probabilities. Let the calculated probabilty from a given agent_type be p=[p_1, p_2, p_3] and a random probability (analogous to not using memory/learning) be p_r=[1/3, 1/3, 1/3]. Moreover the D_nodal shows the number of nodes between the percept and the action set. (D_nodal for A and C is one and for A and D is two if the training order is A-B-C-D). Then the final probability will be calculated as 
 p*theta + p_r*(1-theta). theta computed then in the following way:
 
 - if nodal_theta = Not: theta=memory_sharpness, i.e. in this case theta does not change with D_nodal
 - if nodal_theta = Lin: theta= max(0, memory_sharpness - (D_nodal* gamma_nodal)), i.e. theta changes linearly with nodal distance
 - if nodal_theta = Pow: theta= memory_sharpness* pow(D_nodal, -1*gamma_nodal), i.e. theta changes with nodal distance in a power law format
 
-**gamma_nodal**: float >= 0 where gamma_nodal=0 means no nodal effect. If, nodal_theta=Lin, for gamma_nodal >= mempry_sharpness/D_nodal, the choices would be random. Closer value to zero, less nodal effect. Aplicable for 'standard' type. 
+**gamma_nodal**: \
+float >= 0 where gamma_nodal=0 means no nodal effect. If, nodal_theta=Lin, for gamma_nodal >= mempry_sharpness/D_nodal, the choices would be random. Closer value to zero, less nodal effect. Aplicable for 'standard' type. 
 
 
 ## Assumptions/Constraints 
