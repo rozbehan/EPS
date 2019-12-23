@@ -193,8 +193,27 @@ float >= 0 where gamma_nodal=0 means no nodal effect. If, nodal_theta=Lin, for g
 ## License
 
 
+![](EPS_1.png)
 
-![EPS_1.png]
+![](EPS_2.png)
+
+![](EPS_3.png)
+
+![](EPS_4.png)
+
+![](EPS_5.png)
+
+![](EPS_6.png)
+
+![](EPS_7.png)
+
+![](EPS_8.png)
+
+![](EPS_9.png)
+
+![](EPS_A.png)
+
+![](EPS_B.png)
 
 
 ```python
