@@ -70,7 +70,7 @@ The number of comparison stimuli in the experiment. This must be at least 2 and 
 **training_order**: \
 The structure of training and blocks in dict() format. There are two ways to initialize it though:
 
-- First: let num_classes=4, and size_action_set=3, and
+1. let num_classes=4, and size_action_set=3, and
 
      training_order={ \
                      1: [('A', 'B', 40)], \
@@ -80,7 +80,7 @@ The structure of training and blocks in dict() format. There are two ways to ini
      
      The numbers 1,2,3 shows the order of training. As an example, the first block contains 30 trials of relations with A1, A2, A3, or A4 as the sample stimuli and three comparison stimuli from B1, B2, B3, and B4. Note that the correct choice must be among the comparison stimuli, say for A2, (B1, B3, B4) is not a valid action set/comparison stimuli. Moreover that number of trials at each block must be a multiple of num_classes. Since, the model produce the same number of trial for each particular pair. 
  
-- Second: let num_classes=2, and size_action_set=2, and
+2. let num_classes=2, and size_action_set=2, and
 
      training_order={ \
                      1:[('A1', 'B1', 10)],\
