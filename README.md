@@ -194,7 +194,9 @@ float >= 0 where gamma_nodal=0 means no nodal effect. If, nodal_theta=Lin, for g
 
 
 
-!(EPS_1.png)
+![EPS_1.png]
+
+
 ```python
 
 ```
