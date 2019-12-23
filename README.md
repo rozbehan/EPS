@@ -27,9 +27,9 @@ The program might crash for not valid initial values
 
 ## Files details
 
-There are two options to initialize the code and run it. 
-1- If you run the "main.py", you can change the initial values in initialization.py
-2- If you run the "main_gui.py", you can initialize values through an interfce (only Windows OS)
+There are two options to initialize the code and run it. \
+1- If you run the "main.py", you can change the initial values in initialization.py \
+2- If you run the "main_gui.py", you can initialize values through an interfce (only Windows OS) \
 
 The Initialization_detail.py is for adding new experiments and can not be changed through interface window which means just pre-defined experiments can be chosen. 
 
